@@ -13,8 +13,8 @@ main .opening-container > div { max-width: none; padding: 0; }
 .opening-content {
   align-self: end;
   box-sizing: border-box;
-  padding: 120px 32px 72px max(32px, calc((100vw - 1200px) / 2 + 32px));
-  max-width: calc(760px + max(32px, calc((100vw - 1200px) / 2 + 32px)));
+  padding: 120px 32px 72px max(32px, calc((100vw - 1200px) / 2));
+  max-width: calc(760px + max(32px, calc((100vw - 1200px) / 2)));
 }
 
 .opening h1,
