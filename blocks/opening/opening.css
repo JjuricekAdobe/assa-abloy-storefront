@@ -12,8 +12,9 @@ main .opening-container > div { max-width: none; padding: 0; }
 
 .opening-content {
   align-self: end;
-  padding: 120px 24px 64px;
-  max-width: 760px;
+  box-sizing: border-box;
+  padding: 120px 32px 72px max(32px, calc((100vw - 1200px) / 2 + 32px));
+  max-width: calc(760px + max(32px, calc((100vw - 1200px) / 2 + 32px)));
 }
 
 .opening h1,
@@ -80,5 +81,5 @@ main .opening-container > div { max-width: none; padding: 0; }
 
 @media (width < 900px) {
   .opening { grid-template-columns: minmax(0, 1fr) 18%; min-height: 560px; }
-  .opening-content { padding: 96px 20px 40px; }
+  .opening-content { padding: 96px 24px 40px; max-width: none; }
 }
