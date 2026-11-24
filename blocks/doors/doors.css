@@ -1,0 +1,76 @@
+.doors-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--aa-line);
+  border: 1px solid var(--aa-line);
+}
+
+.door { background: #fff; }
+
+.door-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
+  padding: 40px 32px 32px;
+  color: var(--aa-navy);
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* The door's edge lights up when you reach for it. */
+.door-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--aa-cyan);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform .45s cubic-bezier(.2, .7, .1, 1);
+}
+
+.door-panel:hover,
+.door-panel:focus-visible { background: var(--aa-stone); }
+.door-panel:hover::before,
+.door-panel:focus-visible::before { transform: scaleY(1); }
+.door-panel:focus-visible { outline: 2px solid var(--aa-cyan); outline-offset: -2px; }
+
+.door-name {
+  margin: 0;
+  font-family: var(--aa-font);
+  font-weight: 500;
+  font-size: clamp(3rem, 3.4vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.door-text {
+  margin: 16px 0 0;
+  max-width: 30ch;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--aa-slate);
+}
+
+.door-cta {
+  margin-top: auto;
+  font-size: 1.5rem;
+  color: var(--aa-navy);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door-panel, .door-panel::before { transition: none; }
+}
+
+@media (width < 900px) {
+  .doors-list { grid-template-columns: 1fr; }
+  .door-panel { min-height: 240px; }
+}

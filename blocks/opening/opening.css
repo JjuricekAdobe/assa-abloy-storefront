@@ -1,0 +1,84 @@
+main .opening-container > div { max-width: none; padding: 0; }
+
+.opening {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30%;
+  min-height: min(78vh, 720px);
+  background: var(--aa-navy);
+  color: #fff;
+  overflow: hidden;
+}
+
+.opening-content {
+  align-self: end;
+  padding: 120px 24px 64px;
+  max-width: 760px;
+}
+
+.opening h1,
+.opening h2 {
+  margin: 0 0 24px;
+  font-family: var(--aa-font);
+  font-weight: 500;
+  font-size: clamp(4rem, 7vw, 8.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+.opening p {
+  margin: 0 0 32px;
+  max-width: 46ch;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 76%);
+}
+
+.opening p.opening-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+
+.opening a.opening-link {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+
+.opening a.opening-link-primary { background: #fff; border-color: #fff; color: var(--aa-navy); }
+.opening a.opening-link:hover { border-color: var(--aa-cyan); }
+.opening a.opening-link-primary:hover { background: var(--aa-mist); border-color: var(--aa-mist); }
+.opening a.opening-link:focus-visible { outline: 2px solid var(--aa-cyan); outline-offset: 3px; }
+
+/* The gap: a sliver of light between "door" and "frame". */
+.opening-gap {
+  position: relative;
+  border-left: 1px solid rgb(255 255 255 / 8%);
+  background: #0e2456;
+}
+
+.opening-gap::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -1px;
+  width: 2px;
+  background: var(--aa-cyan);
+  box-shadow: 0 0 24px 6px rgb(9 195 241 / 35%), 0 0 120px 30px rgb(9 195 241 / 12%);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 1.4s cubic-bezier(.2, .7, .1, 1), width 1.4s cubic-bezier(.2, .7, .1, 1) .9s;
+}
+
+.opening.is-open .opening-gap::before { transform: scaleY(1); width: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-gap::before { transition: none; transform: none; width: 10px; }
+}
+
+@media (width < 900px) {
+  .opening { grid-template-columns: minmax(0, 1fr) 18%; min-height: 560px; }
+  .opening-content { padding: 96px 20px 40px; }
+}
