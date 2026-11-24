@@ -743,3 +743,5 @@ main .section.aa-note h2 { margin-bottom: 16px; }
 
 footer .footer { background: var(--aa-stone); color: var(--aa-slate); }
 footer .footer a:any-link { color: var(--aa-navy); }
+footer .footer p a + a { margin-left: 24px; }
+main .section.doors-container { padding-block: 72px 24px; }
