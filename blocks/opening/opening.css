@@ -83,3 +83,40 @@ main .opening-container > div { max-width: none; padding: 0; }
   .opening { grid-template-columns: minmax(0, 1fr) 18%; min-height: 560px; }
   .opening-content { padding: 96px 24px 40px; max-width: none; }
 }
+
+/* Optional photo behind the navy: the navy stays, the photo shows through. */
+.opening-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.opening-backdrop picture,
+.opening-backdrop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 40%;
+}
+
+.opening-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgb(11 29 71 / 92%) 0%,
+    rgb(11 29 71 / 86%) 38%,
+    rgb(11 29 71 / 62%) 70%,
+    rgb(11 29 71 / 50%) 100%);
+}
+
+.opening.has-backdrop .opening-content,
+.opening.has-backdrop .opening-gap { position: relative; z-index: 1; }
+
+/* The "frame" side lets the photo through too, slightly cooler. */
+.opening.has-backdrop .opening-gap { background: rgb(14 36 86 / 35%); }
+
+@media (width < 900px) {
+  .opening-backdrop::after { background: rgb(11 29 71 / 80%); }
+}
